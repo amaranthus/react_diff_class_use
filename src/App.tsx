@@ -1,26 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import * as React from "react";
+import { BrowserRouter, Route, Link } from "react-router-dom";
+import AppHooks from "./AppHooks";
+import AppClass from "./AppClass";
 
-const App: React.FC = () => {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+const App = () => (
+  <BrowserRouter>
+    <div>
+      <ul>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/hooks">hooks</Link>
+        </li>
+        <li>
+          <Link to="/class">class</Link>
+        </li>
+      </ul>
+
+      <hr />
+
+      <Route exact path="/" component={Home} />
+      <Route path="/class" component={AppClass} />
+      <Route path="/hooks" component={AppHooks} />
     </div>
-  );
-}
+  </BrowserRouter>
+);
+
+const Home = () => (
+  <div>
+    <h2>Home</h2>
+    <p>ホームです</p>
+  </div>
+);
 
 export default App;
